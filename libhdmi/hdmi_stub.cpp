@@ -34,49 +34,52 @@ namespace qhwc {
 
 HDMIDisplay::HDMIDisplay() : mFd(-1), mCurrentMode(-1), mModeCount(0),
         mPrimaryWidth(0), mPrimaryHeight(0), mUnderscanSupported(false) {
-    ALOGD("%s stub", __FUNCTION__);
+    ALOGV("%s stub", __FUNCTION__);
 }
 
 HDMIDisplay::~HDMIDisplay() {
-    ALOGD("%s stub", __FUNCTION__);
+    ALOGV("%s stub", __FUNCTION__);
 }
 
 void HDMIDisplay::setHPD(uint32_t value) {
-    ALOGD("%s stub", __FUNCTION__);
+    ALOGV("%s stub", __FUNCTION__);
+    (void) value;
 }
 
 bool HDMIDisplay::isHDMIPrimaryDisplay() {
-    ALOGD("%s stub", __FUNCTION__);
+    ALOGV("%s stub", __FUNCTION__);
     return false;
 }
 
 int HDMIDisplay::getConnectedState() {
-    ALOGD("%s stub", __FUNCTION__);
+    ALOGV("%s stub", __FUNCTION__);
     return -1;
 }
 
 void HDMIDisplay::activateDisplay() {
-    ALOGD("%s stub", __FUNCTION__);
+    ALOGV("%s stub", __FUNCTION__);
 }
 
 void HDMIDisplay::getAttributes(uint32_t& width, uint32_t& height) {
-    ALOGD("%s stub", __FUNCTION__);
+    ALOGV("%s stub", __FUNCTION__);
     width = height = 0;
 }
 
 int HDMIDisplay::configure() {
-    ALOGD("%s stub", __FUNCTION__);
+    ALOGV("%s stub", __FUNCTION__);
     return -1;
 }
 
 int HDMIDisplay::teardown() {
-    ALOGD("%s stub", __FUNCTION__);
+    ALOGV("%s stub", __FUNCTION__);
     return 0;
 }
 
 void HDMIDisplay::setPrimaryAttributes(uint32_t primaryWidth,
                                        uint32_t primaryHeight) {
-    ALOGD("%s stub", __FUNCTION__);
+    ALOGV("%s stub", __FUNCTION__);
+    (void) primaryWidth;
+    (void) primaryHeight;
 }
 
 };
