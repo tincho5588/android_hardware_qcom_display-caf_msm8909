@@ -74,6 +74,10 @@ void CopyBit::reset() {
     mCopyBitDraw = false;
 }
 
+hwc_rect_t CopyBit::getDirtyRect() {
+    return mFPSDirtyRect;
+}
+
 bool CopyBit::canUseCopybitForYUV(hwc_context_t *ctx) {
     // return true for non-overlay targets
     if(ctx->mMDP.hasOverlay && ctx->mMDP.version >= qdutils::MDP_V4_0) {
@@ -227,8 +231,10 @@ bool CopyBit::prepareSwapRect(hwc_context_t *ctx,
            canUseSwapRect = 1;
 #ifdef QTI_BSP
            dirtyRect = getUnion(dirtyRect, calculateDirtyRect(&layer,fullFrame));
+           mFPSDirtyRect = dirtyRect;
 #else
           (void)fullFrame;
+           mFPSDirtyRect = getUnion(dirtyRect, calculateDirtyRect(&layer,fullFrame));
 #endif
            displayRect = getUnion(displayRect, layer.displayFrame);
        }

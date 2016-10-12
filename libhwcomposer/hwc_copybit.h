@@ -49,6 +49,8 @@ public:
 
     private_handle_t * getCurrentRenderBuffer();
 
+    hwc_rect_t getDirtyRect();
+
     void setReleaseFd(int fd);
 
     void setReleaseFdSync(int fd);
@@ -137,6 +139,7 @@ private:
     LayerCache mLayerCache;
     FbCache mFbCache;
     hwc_rect_t mDirtyRect;
+    hwc_rect_t mFPSDirtyRect;
     bool prepareSwapRect(hwc_context_t *ctx, hwc_display_contents_1_t *list,
                   int dpy);
     bool isLayerChanging(hwc_context_t *ctx,

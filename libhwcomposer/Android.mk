@@ -12,13 +12,14 @@ LOCAL_C_INCLUDES              := $(common_includes) $(kernel_includes) \
 ifeq ($(strip $(TARGET_USES_QCOM_DISPLAY_PP)),true)
 LOCAL_C_INCLUDES              += $(TARGET_OUT_HEADERS)/qdcm/inc \
                                  $(TARGET_OUT_HEADERS)/common/inc \
-                                 $(TARGET_OUT_HEADERS)/pp/inc
+                                 $(TARGET_OUT_HEADERS)/pp/inc \
+                                 $(TARGET_OUT_HEADERS)/perffeedback
 endif
 
 LOCAL_SHARED_LIBRARIES        := $(common_libs) libEGL liboverlay \
                                  libhdmi libqdutils libhardware_legacy \
                                  libdl libmemalloc libqservice libsync \
-                                 libbinder libmedia
+                                 libbinder libmedia libqti-userspacectl
 
 LOCAL_CFLAGS                  := $(common_flags) -DLOG_TAG=\"qdhwcomposer\" -Wno-absolute-value \
                                  -Wno-float-conversion
