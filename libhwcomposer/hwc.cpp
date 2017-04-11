@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2010 The Android Open Source Project
- * Copyright (C) 2012-2016, The Linux Foundation. All rights reserved.
+ * Copyright (C) 2012-2017, The Linux Foundation. All rights reserved.
  *
  * Not a Contribution, Apache license notifications and license are retained
  * for attribution purposes only.
@@ -313,7 +313,7 @@ static int hwc_prepare_primary(hwc_composer_device_1 *dev,
     }
 
     android::sp<userspaceCtl::IUserspaceCtl> uspaceCtlClient = userspaceCtl::getUserspaceCtlService();
-    if (uspaceCtlClient != NULL) {
+    if ((uspaceCtlClient != NULL) && (ctx->mCopyBit[dpy])) {
         hwc_rect_t dirtyRect = ctx->mCopyBit[dpy]->getDirtyRect();
         int area = (((float)((dirtyRect.right - dirtyRect.left)*(dirtyRect.bottom - dirtyRect.top))/ \
                 (float)((ctx->dpyAttr[dpy].xres)*(ctx->dpyAttr[dpy].yres)))*100);
