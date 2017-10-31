@@ -38,14 +38,13 @@ ifeq ($(call is-board-platform-in-list, msm8909), true)
     common_flags += -DMDSS_TARGET
 endif
 
-common_deps  :=
-kernel_includes :=
+common_deps := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+kernel_includes := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 
 # Executed only on QCOM BSPs
 ifeq ($(TARGET_USES_QCOM_BSP),true)
 # Enable QCOM Display features
     common_flags += -DQTI_BSP
-    common_includes += $(BOARD_OPENSOURCE_DIR)/display-frameworks/include
 endif
 ifneq ($(call is-platform-sdk-version-at-least,18),true)
     common_flags += -DANDROID_JELLYBEAN_MR1=1

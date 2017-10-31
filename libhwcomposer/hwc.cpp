@@ -40,7 +40,6 @@
 #include "profiler.h"
 #include "hwc_virtual.h"
 #include "hwc_qdcm.h"
-#include "IUserspaceCtl.h"
 
 using namespace qhwc;
 using namespace overlay;
@@ -310,14 +309,6 @@ static int hwc_prepare_primary(hwc_composer_device_1 *dev,
                 ctx->mCopyBit[dpy]->prepare(ctx, list, dpy);
         }
         setGPUHint(ctx, list);
-    }
-
-    android::sp<userspaceCtl::IUserspaceCtl> uspaceCtlClient = userspaceCtl::getUserspaceCtlService();
-    if ((uspaceCtlClient != NULL) && (ctx->mCopyBit[dpy])) {
-        hwc_rect_t dirtyRect = ctx->mCopyBit[dpy]->getDirtyRect();
-        int area = (((float)((dirtyRect.right - dirtyRect.left)*(dirtyRect.bottom - dirtyRect.top))/ \
-                (float)((ctx->dpyAttr[dpy].xres)*(ctx->dpyAttr[dpy].yres)))*100);
-        uspaceCtlClient->Dispatch(area);
     }
     return 0;
 }
